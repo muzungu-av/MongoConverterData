@@ -1,6 +1,6 @@
 from typing import TypeVar, Generic
 
-from factory.db.Connector import Connector
+from factory.connector.Connector import Connector
 from factory.read.DbReader import DbReader
 from factory.read.FileReader import FileReader
 from factory.read.Reader import Reader

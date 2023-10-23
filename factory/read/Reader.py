@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from factory.db.Connector import Connector
+from factory.connector.Connector import Connector
 
 
 class Reader():

@@ -1,7 +1,7 @@
 import sys
 from argParser import createParser
-from factory.db.Connector import Connector
-from factory.db.DbConnectorFactory import DbConnectorFactory
+from factory.connector.Connector import Connector
+from factory.connector.DbConnectorFactory import DbConnectorFactory
 from factory.read.ModeReadFactory import ModeReadFactory
 from factory.read.Reader import Reader
 from factory.write.ModeWriteFactory import ModeWriteFactory

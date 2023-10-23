@@ -1,7 +1,7 @@
 from typing import Generic, TypeVar
 
-from factory.db.AwsConnector import AwsConnector
-from factory.db.LocalConnector import LocalConnector
+from factory.connector.AwsConnector import AwsConnector
+from factory.connector.LocalConnector import LocalConnector
 
 SwitcherConnectorFactory = {
     'local': LocalConnector,

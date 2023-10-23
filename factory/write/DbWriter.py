@@ -1,6 +1,6 @@
 from typing import Any
 from pymongo import MongoClient
-from factory.db.Connector import Connector
+from factory.connector.Connector import Connector
 from factory.write.Writer import Writer
 
 

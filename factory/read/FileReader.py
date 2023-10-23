@@ -1,4 +1,4 @@
-from factory.db.Connector import Connector
+from factory.connector.Connector import Connector
 from factory.read.Reader import Reader
 
 

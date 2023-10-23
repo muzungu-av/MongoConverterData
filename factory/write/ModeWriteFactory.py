@@ -1,6 +1,6 @@
 from typing import TypeVar, Generic
 
-from factory.db.Connector import Connector
+from factory.connector.Connector import Connector
 from factory.write.DbWriter import DbWriter
 from factory.write.EmulateWriter import EmulateWriter
 from factory.write.FileWriter import FileWriter
