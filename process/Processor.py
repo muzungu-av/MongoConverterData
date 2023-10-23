@@ -14,32 +14,32 @@ class Processor():
         self.jobs = list()
 
     def process(self):
+        job_1: Job
         if self.reader.read_collection(self.reader, Collection=self.source_coll) == True:
             # job 1 - find one collection
-            function = lambda t: self.reader.get_collection(self.reader).find_one()
-            job_1: Job = Job("find one", function, ())
-            self.jobs.append(job_1)
+            # function = lambda t: self.reader.get_collection(self.reader).find_one()
+            # job_1 = Job("find one", function, ())
+            # self.jobs.append(job_1)
 
-            # job 2 - find all collection
-            function = lambda t: self.reader.get_collection(self.reader).find(t[0], t[1])
-            job_2: Job = Job("find all coll",
+            # # job 2 - find all collection
+            function = lambda t: self.reader.get_collection(self.reader).find_one(t[0], t[1])
+            job_1: Job = Job("find all coll",
                              function,
                              ({}, {"_id": 1, "name": 1, "description": 1, "date_start": 1, "date_end": 1, "regions": 1}))
-            self.jobs.append(job_2)
+            self.jobs.append(job_1)
 
             # job 3 - insert one collection
-            coll = self.writer.set_collection(self.writer, Collection=self.target_coll_1)
-            d = {"_id": 5, "name": "Raju", "Roll No": "1005", "Branch": "CSE"}
-            function = lambda t: coll.insert_one(d)
-            job_3: Job = Job("insert one doc", function, ())
-            self.jobs.append(job_3)
+            # coll = self.writer.set_collection(self.writer, Collection=self.target_coll_1)
+            # d = {"_id": 5, "name": "Raju", "Roll No": "1005", "Branch": "CSE"}
+            # function = lambda t: coll.insert_one(t)
+            # job_3: Job = Job("insert one doc", function, (d))
+            # self.jobs.append(job_3)
 
             # job 4 - write collection
-            # coll = self.writer.set_collection(self.writer, Collection=self.target_coll_1)
-            # print(self.job_result)
-            # function = lambda t: coll.insert_many(d)
-            # job_4: Job = Job("insert one doc", function, ())
-            # self.jobs.append(job_4)
+            coll = self.writer.set_collection(self.writer, Collection=self.target_coll_1)
+            function = lambda t: coll.insert_one(t)
+            job_4: Job = Job("insert one doc", function, (), job_1.get_job_result)
+            self.jobs.append(job_4)
 
             self.run_jobs()
 
@@ -51,7 +51,6 @@ class Processor():
             job = self.jobs.pop(0)
             result_flag, self.job_result = job.run(job_number)
 
-            # print result
             if result_flag == False:
                 print("[Processor]- Job #{} ({}) failed, job_result: {}".format(job_number, job.name_job,
                                                                                 self.job_result))
